@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora de Litros de Pintura</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Calculadora de Pintura</a>
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item"><a class="nav-link" href="#">Inicio</a></li>
+      <li class="nav-item"><a class="nav-link" href="#">Contacto</a></li>
+      <li class="nav-item"><a class="nav-link" href="#">Quiénes Somos</a></li>
+      <li class="nav-item"><a class="nav-link" href="historial.html">Historial de Cálculos</a></li>
+    </ul>
+  </nav>
+  <div class="container mt-4">
+    <h2>Calculadora de Litros de Pintura</h2>
+    <form id="pintForm">
+      <div class="form-group">
+        <label for="numambs">Cantidad de Ambientes a Pintar:</label>
+        <input type="number" class="form-control" id="numambs" required>
+      </div>
+      <div id="ambInputs"></div>
+      <button type="submit" class="btn btn-primary">Calcular</button>
+      <button type="button" class="btn btn-secondary ml-2" id="clearBtn">Limpiar</button>
+    </form>
+    <div id="output"></div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
