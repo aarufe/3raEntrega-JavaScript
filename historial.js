@@ -1,14 +1,23 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const historialContainer = document.getElementById("historial");
+  const historialList = document.getElementById("historialList");
+  const clearHistoryBtn = document.getElementById("clearHistoryBtn");
 
-  const guardar = JSON.parse(localStorage.getItem("resultados"));
+  // Obtener historial almacenado en localStorage
+  const historial = JSON.parse(localStorage.getItem("historial")) || [];
 
-  if (guardar) {
-    historialContainer.innerHTML = "<h3>Cálculos Anteriores:</h3>";
-    for (const color in guardar) {
-      historialContainer.innerHTML += `<p>Color: ${color}, Litros de Pintura: ${guardar[color].toFixed(2)}</p>`;
-    }
-  } else {
-    historialContainer.innerHTML = "<p>No hay cálculos anteriores disponibles.</p>";
+  for (const historialItem of historial) {
+    const listItem = document.createElement("li");
+    listItem.innerHTML = `
+      <p><strong>Fecha y Hora:</strong> ${historialItem.date}</p>
+      <ul>
+        ${Object.keys(historialItem.results).map(color => `<li><strong>Color:</strong> ${color}, <strong>Litros de Pintura:</strong> ${historialItem.results[color].toFixed(2)}</li>`).join("")}
+      </ul>
+    `;
+    historialList.appendChild(listItem);
   }
+
+  clearHistoryBtn.addEventListener("click", function () {
+    localStorage.removeItem("historial");
+    historialList.innerHTML = "";
+  });
 });
